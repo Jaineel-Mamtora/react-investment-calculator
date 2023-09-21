@@ -1,6 +1,34 @@
 import logo from './assets/investment-calculator-logo.png'
+import MetricForm from './components/MetricForm'
 
 function App() {
+  let metricInputLabelData = [
+    {
+      id: 'current-savings',
+      type: 'number',
+      unit: '%',
+      text: 'Current Savings',
+    },
+    {
+      id: 'yearly-contribution',
+      type: 'number',
+      unit: '%',
+      text: 'Yearly Savings',
+    },
+    {
+      id: 'expected-return',
+      type: 'number',
+      unit: '%, per year',
+      text: 'Expected Interest',
+    },
+    {
+      id: 'duration',
+      type: 'number',
+      unit: 'years',
+      text: 'Investment Duration',
+    },
+  ]
+
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
     // You might not directly want to bind it to the submit event on the form though...
@@ -35,38 +63,7 @@ function App() {
         <h1>Investment Calculator</h1>
       </header>
 
-      <form className="form">
-        <div className="input-group">
-          <p>
-            <label htmlFor="current-savings">Current Savings ($)</label>
-            <input type="number" id="current-savings" />
-          </p>
-          <p>
-            <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
-            <input type="number" id="yearly-contribution" />
-          </p>
-        </div>
-        <div className="input-group">
-          <p>
-            <label htmlFor="expected-return">
-              Expected Interest (%, per year)
-            </label>
-            <input type="number" id="expected-return" />
-          </p>
-          <p>
-            <label htmlFor="duration">Investment Duration (years)</label>
-            <input type="number" id="duration" />
-          </p>
-        </div>
-        <p className="actions">
-          <button type="reset" className="buttonAlt">
-            Reset
-          </button>
-          <button type="submit" className="button">
-            Calculate
-          </button>
-        </p>
-      </form>
+      <MetricForm metricInputLabelData={metricInputLabelData} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
